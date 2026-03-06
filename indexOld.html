@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imaduddin Qazi - Portfolio</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        p {
+            color: rgb(85, 85, 85);
+        }
+
+        a,
+        .btn {
+            transition: all 300ms ease;
+        }
+
+        /* Navigation */
+        nav,
+        .nav-links {
+            display: flex;
+        }
+
+        nav {
+            justify-content: space-around;
+            align-items: center;
+            height: 17vh;
+        }
+
+        .nav-links {
+            gap: 2rem;
+            list-style: none;
+            font-size: 1.5rem;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: grey;
+            text-decoration: underline;
+            text-underline-offset: 1rem;
+            text-decoration-color: rgb(181, 181, 181);
+        }
+
+        .logo {
+            font-size: 2rem;
+            cursor: default;
+        }
+
+        #hamburger-nav {
+            display: none;
+        }
+
+        .hamburger-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .hamburger-icon span {
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-links {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            width: fit-content;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: 100;
+        }
+
+        .menu-links a {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            color: black;
+            text-decoration: none;
+        }
+
+        .menu-links li {
+            list-style: none;
+        }
+
+        .menu-links.open {
+            max-height: 300px;
+        }
+
+        .hamburger-icon.open span:first-child {
+            transform: rotate(45deg) translate(10px, 5px);
+        }
+
+        .hamburger-icon.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-icon.open span:last-child {
+            transform: rotate(-45deg) translate(10px, -5px);
+        }
+
+        /* Sections */
+        section {
+            padding-top: 4vh;
+            min-height: 96vh;
+            margin: 0 10rem;
+        }
+
+        .section-container {
+            display: flex;
+        }
+
+        /* Profile */
+        #profile {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            min-height: 80vh;
+        }
+
+        .section__pic-container {
+            display: flex;
+            width: 280px;
+            height: 280px;
+            margin: auto 0;
+        }
+
+        .section__pic-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .section__text {
+            align-self: center;
+            text-align: center;
+        }
+
+        .section__text p {
+            font-weight: 600;
+        }
+
+        .section__text__p1 {
+            text-align: center;
+        }
+
+        .section__text__p2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        #socials-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+
+        .icon {
+            cursor: pointer;
+            height: 2rem;
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            font-weight: 600;
+            transition: all 300ms ease;
+            padding: 1rem;
+            width: 8rem;
+            border-radius: 2rem;
+        }
+
+        .btn-color-1,
+        .btn-color-2 {
+            border: rgb(53, 53, 53) 0.1rem solid;
+        }
+
+        .btn-color-1:hover,
+        .btn-color-2:hover {
+            cursor: pointer;
+        }
+
+        .btn-color-1,
+        .btn-color-2:hover {
+            background: rgb(53, 53, 53);
+            color: white;
+        }
+
+        .btn-color-1:hover {
+            background: rgb(0, 0, 0);
+        }
+
+        .btn-color-2 {
+            background: none;
+        }
+
+        .btn-color-2:hover {
+            border: white 0.1rem solid;
+        }
+
+        /* About */
+        .about-containers {
+            gap: 2rem;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            display: flex;
+        }
+
+        .about-details-container {
+            justify-content: center;
+            flex-direction: column;
+            display: flex;
+        }
+
+        .details-container {
+            padding: 1.5rem;
+            flex: 1;
+            background: white;
+            border-radius: 2rem;
+            border: rgb(53, 53, 53) 0.1rem solid;
+            border-color: rgb(163, 163, 163);
+            text-align: center;
+        }
+
+        .text-container {
+            text-align: justify;
+            margin-top: 2rem;
+        }
+
+        /* Experience */
+        .experience-sub-title {
+            color: rgb(85, 85, 85);
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .experience-details-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .article-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        article {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            min-height: 50px;
+        }
+
+        article .icon {
+            cursor: default;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        article div {
+            flex: 1;
+        }
+
+        article h3 {
+            font-size: 1rem;
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+            word-wrap: break-word;
+        }
+
+        article p {
+            font-size: 0.9rem;
+            color: rgb(85, 85, 85);
+        }
+
+        .experience-item {
+            text-align: left;
+        }
+
+        .company {
+            color: rgb(85, 85, 85);
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .experience-list {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-list li {
+            margin-bottom: 0.5rem;
+            color: rgb(85, 85, 85);
+        }
+
+        /* Projects - FIXED LAYOUT */
+        #projects {
+            position: relative;
+        }
+
+        #projects .about-containers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .details-container.color-container {
+            border-color: rgb(163, 163, 163);
+            background: rgb(250, 250, 250);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Enhanced Carousel with Preview */
+        .project-carousel {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 1rem;
+            cursor: pointer;
+        }
+
+        .carousel-container:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide .project-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-slide .project-img.active {
+            opacity: 1;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 2;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #333;
+            transform: scale(1.2);
+        }
+
+        .dot:hover {
+            background: #666;
+        }
+
+        /* Image Preview Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .modal-close:hover {
+            background: #f0f0f0;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal-nav:hover {
+            background: white;
+        }
+
+        .modal-nav.prev {
+            left: 20px;
+        }
+
+        .modal-nav.next {
+            right: 20px;
+        }
+
+        .modal-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .project-title {
+            margin: 1rem 0;
+            color: black;
+            font-size: 1.5rem;
+        }
+
+        .project-description {
+            color: rgb(85, 85, 85);
+            text-align: left;
+            margin: 1rem 0;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+
+        .tech-tag {
+            background-color: rgb(240, 240, 240);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            color: rgb(85, 85, 85);
+            border: 1px solid rgb(200, 200, 200);
+        }
+
+        .project-btn {
+            color: black;
+            border-color: rgb(163, 163, 163);
+        }
+
+        /* Contact */
+        #contact {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 70vh;
+        }
+
+        .contact-info-upper-container {
+            display: flex;
+            justify-content: center;
+            border-radius: 2rem;
+            border: rgb(53, 53, 53) 0.1rem solid;
+            border-color: rgb(163, 163, 163);
+            background: rgb(250, 250, 250);
+            margin: 2rem auto;
+            padding: 0.5rem;
+        }
+
+        .contact-info-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem;
+        }
+
+        .contact-info-container p {
+            font-size: larger;
+        }
+
+        .contact-icon {
+            cursor: default;
+        }
+
+        .email-icon {
+            height: 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            min-height: 26vh;
+            margin: 0 1rem;
+        }
+
+        footer p {
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 1400px) {
+            #profile {
+                margin-bottom: 6rem;
+            }
+
+            .about-containers {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            #desktop-nav {
+                display: none;
+            }
+
+            #hamburger-nav {
+                display: flex;
+            }
+
+            section {
+                margin: 0 5%;
+            }
+
+            .section__pic-container {
+                width: 275px;
+                height: 275px;
+                margin: 0 auto 2rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            section {
+                margin: 0 3%;
+                min-height: fit-content;
+            }
+
+            #profile {
+                gap: 1rem;
+                flex-direction: column;
+                padding-top: 2vh;
+            }
+
+            .section__pic-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .section__text__p2 {
+                font-size: 1.25rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .about-containers,
+            .contact-info-upper-container {
+                flex-direction: column;
+            }
+
+            .article-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .carousel-container {
+                height: 180px;
+            }
+
+            .carousel-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 1rem;
+            }
+
+            #projects .about-containers {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .section__pic-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.75rem;
+                width: 7rem;
+                font-size: 0.9rem;
+            }
+
+            .tech-tag {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">Imaduddin Qazi</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav id="hamburger-nav">
+        <div class="logo">Imaduddin Qazi</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="./assets/me_img.png" alt="Imaduddin Qazi Profile Picture">
+        </div>
+        <div class="section__text">
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title">Imaduddin Qazi</h1>
+            <p class="section__text__p2">Software Developer</p>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="window.open('./assets/Imaduddin_Qazi.pdf')">Download CV</button>
+                <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
+            </div>
+            <div id="socials-container">
+                <a href="https://www.linkedin.com/in/imaduddin-qazi-a361a1355/"><img src="./assets/linkedin-logo.png" alt="My Linkendin Profile" class="icon"></a>
+                <a href="https://leetcode.com/u/ImxdQazz/"><img src="./assets/leetcode-logo.png" alt="My LeetCode Profile" class="icon"></a>
+                <a href="https://github.com/ImaduddinQazi"><img src="./assets/github-logo.png" alt="My Github Profile" class="icon"></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                        <div class="about-me-inside-content">
+                            <h3>Experience</h3>
+                            <p>Software Developer Intern @Ipshopy</p>
+                            <p>Python Developer Intern @Infosys Springboard</p>
+                        </div>
+                    </div>
+                    <div class="details-container">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+                        </svg>
+                        <div class="about-me-inside-content">
+                            <h3>Education</h3>
+                            <p>B.Tech Infromation Technology (IT)<br>Mahatma Gandhi Mission University, Aurangabad</p>
+                        </div>
+                    </div>
+                    <div class="details-container">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zm-7-1h2v-4h4V9h-4V5h-2v4H9v2h4z" />
+                        </svg>
+                        <div class="about-me-inside-content">
+                            <h3>Certifications</h3>
+                            <p>Python & Java (GeekForGeeks)<br>Cybersecurity (TryHackMe)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-container">
+                    <p>
+                        Enthusiastic Software Developer skilled in <strong>Java</strong> and <strong>Python</strong>,
+                        with experience in building applications and backend systems. Strong foundation in
+                        <strong>data structures, algorithms, and problem-solving</strong> with real-world project
+                        development experience.
+                        Actively improving coding skills through DSA practice and competitive programming.
+                        Experienced in <strong>Agile methodologies</strong> as Scrum Master and passionate about
+                        creating
+                        efficient, scalable solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Experience</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Professional Experience</h2>
+                    <div class="experience-item">
+                        <h3>Software Developer - Intern</h3>
+                        <p class="company">Ipshopy</p>
+                        <p>ipshopy.com is an Indian e-commerce platform designed to facilitate seamless online buying
+                            and selling through a scalable, user-centric digital marketplace.</p>
+                        <ul class="experience-list">
+                            <li>Developed and integrated AI-powered ad campaign generation for sellers, including a
+                                working prototype embedded into the live Ipshopy Ad Manager.</li>
+                            <li>Performed in-depth SEO and website audits, resolving 4XX/5XX errors, security header
+                                issues, and optimizing metadata through cross-platform analysis.</li>
+                            <li>Installed, configured, and troubleshot OpenCart, XAMPP, and SQL environments, resolving
+                                compatibility issues and server-side errors.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Python Developer - Intern</h3>
+                        <p class="company">Infosys Springboard</p>
+                        <p>Infosys Springboard is an Infosys initiative that empowers students with practical,
+                            industry-aligned technology and professional skills.</p>
+                        <ul class="experience-list">
+                            <li>Led a 6-member Agile team as Scrum Master, achieving 100% sprint goal completion on time
+                            </li>
+                            <li>Participated in Agile sprints, contributed to code reviews, and maintained comprehensive
+                                project documentation</li>
+                            <li>Developed and deployed RESTful APIs with Flask for real-time courier status updates</li>
+                            <li>Implemented backend modules and data pipelines for courier tracking and dashboard
+                                analytics</li>
+                            <li>Built a secure issue reporting system to improve traceability and capture user feedback
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Technical Skills</h2>
+                    <div class="article-container">
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Python</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Java</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>C & C++</h3>
+                                <p>Elementary</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>HTML/CSS</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>JavaScript</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>SQL</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Flask</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>React.js</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Next.js</h3>
+                                <p>Beginner</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>REST APIs</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Git & GitHub</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Database Design</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>OpenCart</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>SEO Auditing</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        
+                    </div>
+                    <h2 class="experience-sub-title">Core Computer Science</h2>
+                    <div class="article-container">
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Data Structures & Algorithms</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Networking Fundamentals</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Operating Systems</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <h2 class="experience-sub-title">Methodologies</h2>
+                    <div class="article-container">
+
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Agile Methodology (Scrum)</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                        <article>
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <div>
+                                <h3>Software Development Life Cycle (SDLC)</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Projects</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+
+                <!-- EdgeURL Shorter Project -->
+                <div class="details-container color-container">
+                    <div class="project-carousel">
+                        <div class="carousel-container" onclick="openModal(this)">
+                            <div class="carousel-slide">
+                                <img src="./assets\projects\EdgeURL\home.png" alt="EgdeURL Homepage"
+                                    class="project-img active">
+                                <img src="./assets/projects/EdgeURL/shorten.png" alt="EgdeURL Shorten page"
+                                    class="project-img">
+                                <img src="./assets/projects/EdgeURL/shorten1.png" alt="EgdeURL Shorten page1"
+                                    class="project-img">
+                                <img src="./assets/projects/EdgeURL/analytics1.png" alt="Analytics"
+                                    class="project-img">
+                                <img src="./assets/projects/EdgeURL/status.png" alt="Status Page"
+                                    class="project-img">
+                            </div>
+                            <button class="carousel-btn prev"
+                                onclick="event.stopPropagation(); changeSlide(this.parentElement, -1)">◄</button>
+                            <button class="carousel-btn next"
+                                onclick="event.stopPropagation(); changeSlide(this.parentElement, 1)">►</button>
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 0)"></span>
+                            <span class="dot" onclick="currentSlide(this, 1)"></span>
+                            <span class="dot" onclick="currentSlide(this, 2)"></span>
+                            <span class="dot" onclick="currentSlide(this, 3)"></span>
+                        </div>
+                    </div>
+                    <h2 class="experience-sub-title project-title">EdgeURL (A Distributed URL Shortner)</h2>
+                    <p class="project-description">
+                        A production-ready URL shortening service with Redis caching, QR code generation, and real-time analytics.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Node.js + Express</span>
+                        <span class="tech-tag">PostgreSQL (Neon)</span>
+                        <span class="tech-tag">Redis (Upstash)</span>
+                        <span class="tech-tag">React + Vite</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/ImaduddinQazi/EdgeURL-Distributed-URL-Shortener'" target="_blank">Github</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://edge-url-distributed-url-shortener.vercel.app/'">Live Demo</button>
+                    </div>
+                </div>
+
+
+                <!-- E-Grievance Project -->
+                <div class="details-container color-container">
+                    <div class="project-carousel">
+                        <div class="carousel-container" onclick="openModal(this)">
+                            <div class="carousel-slide">
+                                <img src="./assets/projects/E-Grievance/user-dash.png" alt="E-Grievance Dashboard"
+                                    class="project-img active">
+                                <img src="./assets/projects/E-Grievance/user-submit.png" alt="Submit Form"
+                                    class="project-img">
+                                <img src="./assets/projects/E-Grievance/heatmap-admin.png" alt="Heatmap"
+                                    class="project-img">
+                                <img src="./assets/projects/E-Grievance/reports-admin-page.png" alt="Reports"
+                                    class="project-img">
+                            </div>
+                            <button class="carousel-btn prev"
+                                onclick="event.stopPropagation(); changeSlide(this.parentElement, -1)">◄</button>
+                            <button class="carousel-btn next"
+                                onclick="event.stopPropagation(); changeSlide(this.parentElement, 1)">►</button>
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 0)"></span>
+                            <span class="dot" onclick="currentSlide(this, 1)"></span>
+                            <span class="dot" onclick="currentSlide(this, 2)"></span>
+                            <span class="dot" onclick="currentSlide(this, 3)"></span>
+                        </div>
+                    </div>
+                    <h2 class="experience-sub-title project-title">E-Grievance Redressal System</h2>
+                    <p class="project-description">
+                        Full-stack citizen grievance platform with admin and user interfaces for efficient issue
+                        management.
+                        Features interactive heatmap visualization and role-based access control.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Authentication</span>
+                        <span class="tech-tag">Data Visualization</span>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/ImaduddinQazi/E-Grievance-Redressal-System'" target="_blank">Github</button>
+                        <!-- <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Live Demo</button> -->
+                    </div>
+                </div>
+
+                <!-- Garden Go Project -->
+                <div class="details-container color-container">
+                    <div class="project-carousel">
+                        <div class="carousel-container" onclick="openModal(this)">
+                            <div class="carousel-slide">
+                                <img src="./assets/projects/garden-go-auto-courier/products-home-page.png"
+                                    alt="Homepage" class="project-img active">
+                                <img src="./assets/projects/garden-go-auto-courier/products-admin-page.png" alt="Admin"
+                                    class="project-img">
+                                <img src="./assets/projects/garden-go-auto-courier/courier-dashboard.png" alt="Courier"
+                                    class="project-img">
+                            </div>
+                            <button class="carousel-btn prev"
+                                onclick="event.stopPropagation(); changeSlide(this.parentElement, -1)">◄</button>
+                            <button class="carousel-btn next"
+                                onclick="event.stopPropagation(); changeSlide(this.parentElement, 1)">►</button>
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 0)"></span>
+                            <span class="dot" onclick="currentSlide(this, 1)"></span>
+                            <span class="dot" onclick="currentSlide(this, 2)"></span>
+                        </div>
+                    </div>
+                    <h2 class="experience-sub-title project-title">Garden Go Auto Courier Connect</h2>
+                    <p class="project-description">
+                        Full-stack e-commerce web application for gardening products and courier services.
+                        Developed backend tracking system and analytics dashboard with secure issue reporting.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">E-commerce</span>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/ImaduddinQazi/Infosys-Python-Batch-3-Garden-Go'" target="_blank">Github</button>
+                        <!-- <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Live Demo</button> -->
+                    </div>
+                </div>
+
+                <!-- Steganography Project -->
+                <div class="details-container color-container">
+                    <div class="project-carousel">
+                        <div class="carousel-container" onclick="openModal(this)">
+                            <div class="carousel-slide">
+                                <img src="./assets/projects/data-steganography/GUI_Screenshot.png" alt="GUI Tool"
+                                    class="project-img active">
+                            </div>
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 0)"></span>
+                        </div>
+                    </div>
+                    <h2 class="experience-sub-title project-title">Data Steganography Tool</h2>
+                    <p class="project-description">
+                        Desktop GUI tool for hiding and extracting sensitive text within PNG images using steganography.
+                        Features password protection and cross-platform executable distribution.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Tkinter</span>
+                        <span class="tech-tag">Steganography</span>
+                        <span class="tech-tag">Security</span>
+                        <span class="tech-tag">GUI</span>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/ImaduddinQazi/Data-Steganography'" target="_blank">Github</button>
+                        <!-- <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Live Demo</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <p class="section__text__p1">Get in Touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <svg class="icon contact-icon email-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <p><a href="mailto:imadqazi01@gmail.com">imadqazi01@gmail.com</a></p>
+            </div>
+            <div class="contact-info-container">
+                <svg class="icon contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                </svg>
+                <p><a href="https://www.linkedin.com/in/imaduddin-qazi-a361a1355/">LinkedIn</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>Copyright © 2025 Imaduddin Qazi. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Image Preview Modal -->
+    <div class="image-modal" id="imageModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal(event)">×</button>
+            <img id="modalImg" src="" alt="Preview">
+            <button class="modal-nav prev" onclick="event.stopPropagation(); modalNavigate(-1)">◄</button>
+            <button class="modal-nav next" onclick="event.stopPropagation(); modalNavigate(1)">►</button>
+            <div class="modal-counter" id="modalCounter"></div>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger Menu
+        function toggleMenu() {
+            const menu = document.querySelector(".menu-links");
+            const icon = document.querySelector(".hamburger-icon");
+            menu.classList.toggle("open");
+            icon.classList.toggle("open");
+        }
+
+        // Carousel Navigation
+        function changeSlide(carouselContainer, direction) {
+            const slides = carouselContainer.querySelectorAll('.project-img');
+            const dotsContainer = carouselContainer.parentElement.querySelector('.carousel-dots');
+            const dots = dotsContainer.querySelectorAll('.dot');
+            let activeIndex = 0;
+
+            slides.forEach((slide, index) => {
+                if (slide.classList.contains('active')) {
+                    activeIndex = index;
+                }
+            });
+
+            slides[activeIndex].classList.remove('active');
+            dots[activeIndex].classList.remove('active');
+
+            let newIndex = activeIndex + direction;
+            if (newIndex >= slides.length) newIndex = 0;
+            if (newIndex < 0) newIndex = slides.length - 1;
+
+            slides[newIndex].classList.add('active');
+            dots[newIndex].classList.add('active');
+        }
+
+        function currentSlide(dotElement, slideIndex) {
+            const dotsContainer = dotElement.parentElement;
+            const carouselContainer = dotsContainer.parentElement.querySelector('.carousel-container');
+            const slides = carouselContainer.querySelectorAll('.project-img');
+            const dots = dotsContainer.querySelectorAll('.dot');
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        // Modal Functionality
+        let currentModalImages = [];
+        let currentModalIndex = 0;
+
+        function openModal(carouselContainer) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const images = carouselContainer.querySelectorAll('.project-img');
+
+            currentModalImages = Array.from(images).map(img => img.src);
+
+            // Find active image index
+            images.forEach((img, index) => {
+                if (img.classList.contains('active')) {
+                    currentModalIndex = index;
+                }
+            });
+
+            modalImg.src = currentModalImages[currentModalIndex];
+            updateModalCounter();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event.target.classList.contains('image-modal') ||
+                event.target.classList.contains('modal-close')) {
+                const modal = document.getElementById('imageModal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function modalNavigate(direction) {
+            currentModalIndex += direction;
+
+            if (currentModalIndex >= currentModalImages.length) {
+                currentModalIndex = 0;
+            }
+            if (currentModalIndex < 0) {
+                currentModalIndex = currentModalImages.length - 1;
+            }
+
+            document.getElementById('modalImg').src = currentModalImages[currentModalIndex];
+            updateModalCounter();
+        }
+
+        function updateModalCounter() {
+            const counter = document.getElementById('modalCounter');
+            counter.textContent = `${currentModalIndex + 1} / ${currentModalImages.length}`;
+        }
+
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') modalNavigate(-1);
+                if (e.key === 'ArrowRight') modalNavigate(1);
+                if (e.key === 'Escape') {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
