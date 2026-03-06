@@ -1088,6 +1088,51 @@
         <h1 class="title">Projects</h1>
         <div class="experience-details-container">
             <div class="about-containers">
+
+                <!-- EdgeURL Shorter Project -->
+                <div class="details-container color-container">
+                    <div class="project-carousel">
+                        <div class="carousel-container" onclick="openModal(this)">
+                            <div class="carousel-slide">
+                                <img src="./assets/projects/E-Grievance/user-dash.png" alt="E-Grievance Dashboard"
+                                    class="project-img active">
+                                <img src="./assets/projects/E-Grievance/user-submit.png" alt="Submit Form"
+                                    class="project-img">
+                                <img src="./assets/projects/E-Grievance/heatmap-admin.png" alt="Heatmap"
+                                    class="project-img">
+                                <img src="./assets/projects/E-Grievance/reports-admin-page.png" alt="Reports"
+                                    class="project-img">
+                            </div>
+                            <button class="carousel-btn prev"
+                                onclick="event.stopPropagation(); changeSlide(this.parentElement, -1)">◄</button>
+                            <button class="carousel-btn next"
+                                onclick="event.stopPropagation(); changeSlide(this.parentElement, 1)">►</button>
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="currentSlide(this, 0)"></span>
+                            <span class="dot" onclick="currentSlide(this, 1)"></span>
+                            <span class="dot" onclick="currentSlide(this, 2)"></span>
+                            <span class="dot" onclick="currentSlide(this, 3)"></span>
+                        </div>
+                    </div>
+                    <h2 class="experience-sub-title project-title">EdgeURL (A Distributed URL Shortner)</h2>
+                    <p class="project-description">
+                        A production-ready URL shortening service with Redis caching, QR code generation, and real-time analytics.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Node.js + Express</span>
+                        <span class="tech-tag">PostgreSQL (Neon)</span>
+                        <span class="tech-tag">Redis (Upstash)</span>
+                        <span class="tech-tag">React + Vite</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/ImaduddinQazi/E-Grievance-Redressal-System'" target="_blank">Github</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://edge-url-distributed-url-shortener.vercel.app/'">Live Demo</button>
+                    </div>
+                </div>
+
+
                 <!-- E-Grievance Project -->
                 <div class="details-container color-container">
                     <div class="project-carousel">
